@@ -2,6 +2,7 @@
 const photoElement = document.getElementById("photo");
 const signalElement = document.getElementById("signal");
 const answerInput = document.getElementById("answer-input");
+const startRecognitionButton = document.getElementById("start-recognition"); // Получаем ссылку на кнопку распознавания речи
 
 // Массив с данными о фотографиях
 const charactersData = [
@@ -118,15 +119,45 @@ function startGame() {
   }
 }
 
+// Функция для начала распознавания речи
+function startSpeechRecognition() {
+  // Создаем объект для распознавания речи
+  const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+  recognition.lang = 'ru-RU'; // Устанавливаем язык распознавания (может быть изменен на другой, если требуется)
+
+  recognition.onresult = (event) => {
+    // Получаем распознанный текст
+    const speechResult = event.results[0][0].transcript;
+    // Помещаем распознанный текст в поле ввода
+    answerInput.value = speechResult;
+    // После распознавания запускаем функцию для проверки ответа
+    checkAnswer();
+  };
+
+  // Обработчик ошибок распознавания
+  recognition.onerror = (event) => {
+    console.error('Ошибка распознавания речи:', event.error);
+  };
+
+  // Запускаем распознавание речи по нажатию кнопки "Начать распознавание речи"
+  startRecognitionButton.addEventListener("click", () => {
+    recognition.start();
+  });
+}
+
 // Функция для обработки ответа игрока
 function checkAnswer() {
   const character = charactersData[currentCharacterIndex];
   const playerAnswer = answerInput.value.trim().toLowerCase(); // Приводим ответ игрока к нижнему регистру
 
-  if (
-    playerAnswer ===
-    `${character.name.toLowerCase()} ${character.surname.toLowerCase()}`
-  ) {
+  // Удаление всех знаков препинания из ответа игрока
+  const cleanedPlayerAnswer = playerAnswer.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').trim();
+
+  // Удаление лишних пробелов
+  const formattedCharacterName = `${character.name.toLowerCase()} ${character.surname.toLowerCase()}`;
+  const cleanedCharacterName = formattedCharacterName.replace(/\s+/g, ' ').trim();
+
+  if (cleanedPlayerAnswer === cleanedCharacterName) {
     signalElement.textContent = "Правильно!";
     signalElement.classList.add("correct");
     currentCharacterIndex++;
@@ -151,3 +182,5 @@ answerInput.addEventListener("keydown", (event) => {
 
 // Запускаем первую игру
 startGame();
+// Запускаем распознавание речи
+startSpeechRecognition();
