@@ -23,17 +23,24 @@
   }
   
   #signal {
-    width: 30px;
+    width: 100px;
     height: 30px;
-    border-radius: 50%;
-    display: inline-block;
+    border-radius: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
   }
   
   .correct {
-    background-color: green;
+    background-color: #4CAF50;
+    color: white;
   }
   
   .incorrect {
-    background-color: red;
+    background-color: #F44336;
+    color: white;
   }  

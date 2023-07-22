@@ -167,7 +167,7 @@ function checkAnswer() {
     setTimeout(startGame, 2000); // Показываем правильный ответ в течение 2 секунд перед переходом к следующей фотографии
     audioCorrect.play(); // Воспроизводим звук правильного ответа
   } else {
-    signalElement.textContent = "Неправильно! Игра окончена.";
+    signalElement.textContent = "Ты проиграл!";
     signalElement.classList.add("incorrect");
     answerInput.disabled = true; // Выключаем поле ввода ответа
     audioIncorrect.play(); // Воспроизводим звук неправильного ответа
