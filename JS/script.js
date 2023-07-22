@@ -157,17 +157,23 @@ function checkAnswer() {
   const formattedCharacterName = `${character.name.toLowerCase()} ${character.surname.toLowerCase()}`;
   const cleanedCharacterName = formattedCharacterName.replace(/\s+/g, ' ').trim();
 
+  const audioCorrect = document.getElementById("audio-correct");
+  const audioIncorrect = document.getElementById("audio-incorrect");
+
   if (cleanedPlayerAnswer === cleanedCharacterName) {
     signalElement.textContent = "Правильно!";
     signalElement.classList.add("correct");
     currentCharacterIndex++;
     setTimeout(startGame, 2000); // Показываем правильный ответ в течение 2 секунд перед переходом к следующей фотографии
+    audioCorrect.play(); // Воспроизводим звук правильного ответа
   } else {
     signalElement.textContent = "Неправильно! Игра окончена.";
     signalElement.classList.add("incorrect");
     answerInput.disabled = true; // Выключаем поле ввода ответа
+    audioIncorrect.play(); // Воспроизводим звук неправильного ответа
   }
 }
+
 
 // Обработчик события для кнопки "Начать игру"
 const startButton = document.getElementById("start-button");
