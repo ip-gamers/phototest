@@ -16,7 +16,7 @@
 https://ip-gamers.net/gaming/phototest/
 
 ## Вклад в проект
-Ссылка на тему поддержки пока отсутствует
+Ссылка на тему поддержки: https://ip-gamers.net/topic/3221-photo-test/
 
 ## Лицензия
 Тип MIT
