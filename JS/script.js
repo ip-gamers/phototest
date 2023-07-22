@@ -98,7 +98,13 @@ const charactersData = [
   },
 ];
 
-let currentCharacterIndex = 0; // Индекс текущего персонажа в массиве charactersData
+// Функция для перемешивания массива в случайном порядке
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
 
 // Функция для отображения фотографии и начала игры
 function startGame() {
@@ -118,6 +124,19 @@ function startGame() {
     answerInput.disabled = true; // Выключаем поле ввода ответа
   }
 }
+
+// Запускаем первую игру
+shuffleArray(charactersData); // Перемешиваем массив с данными о фотографиях
+let currentCharacterIndex = 0; // Индекс текущего персонажа в массиве charactersData
+startGame();
+
+// Обработчик события для кнопки "Начать игру"
+const startButton = document.getElementById("start-button");
+startButton.addEventListener("click", () => {
+  shuffleArray(charactersData); // Перемешиваем массив с данными о фотографиях перед каждой новой игрой
+  currentCharacterIndex = 0; // Сбрасываем индекс текущего персонажа
+  startGame(); // Запускаем новую игру после перемешивания массива
+});
 
 // Функция для начала распознавания речи
 function startSpeechRecognition() {
@@ -173,11 +192,6 @@ function checkAnswer() {
     audioIncorrect.play(); // Воспроизводим звук неправильного ответа
   }
 }
-
-
-// Обработчик события для кнопки "Начать игру"
-const startButton = document.getElementById("start-button");
-startButton.addEventListener("click", startGame);
 
 // Обработчик события для поля ввода ответа (нажатие клавиши Enter)
 answerInput.addEventListener("keydown", (event) => {
