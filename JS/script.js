@@ -1,3 +1,8 @@
+// Получаем ссылки на элементы HTML, с которыми будем работать
+const photoElement = document.getElementById("photo");
+const signalElement = document.getElementById("signal");
+const answerInput = document.getElementById("answer-input");
+
 // Массив с данными о фотографиях
 const charactersData = [
   {
@@ -91,3 +96,58 @@ const charactersData = [
     photoUrl: "IMAGES/2.jpg"
   },
 ];
+
+let currentCharacterIndex = 0; // Индекс текущего персонажа в массиве charactersData
+
+// Функция для отображения фотографии и начала игры
+function startGame() {
+  if (currentCharacterIndex < charactersData.length) {
+    const character = charactersData[currentCharacterIndex];
+    photoElement.src = character.photoUrl;
+    answerInput.value = ""; // Очищаем поле ввода ответа
+    signalElement.classList.remove("correct", "incorrect"); // Удаляем классы, отвечающие за цветовой сигнал
+    answerInput.disabled = false; // Включаем поле ввода ответа
+    answerInput.focus(); // Устанавливаем фокус на поле ввода
+  } else {
+    // Если персонажи закончились, выводим сообщение об окончании игры
+    photoElement.src = ""; // Очищаем фотографию
+    photoElement.alt = "Фотография";
+    signalElement.textContent = "Игра окончена!";
+    signalElement.classList.remove("correct", "incorrect"); // Удаляем классы, отвечающие за цветовой сигнал
+    answerInput.disabled = true; // Выключаем поле ввода ответа
+  }
+}
+
+// Функция для обработки ответа игрока
+function checkAnswer() {
+  const character = charactersData[currentCharacterIndex];
+  const playerAnswer = answerInput.value.trim().toLowerCase(); // Приводим ответ игрока к нижнему регистру
+
+  if (
+    playerAnswer ===
+    `${character.name.toLowerCase()} ${character.surname.toLowerCase()}`
+  ) {
+    signalElement.textContent = "Правильно!";
+    signalElement.classList.add("correct");
+    currentCharacterIndex++;
+    setTimeout(startGame, 2000); // Показываем правильный ответ в течение 2 секунд перед переходом к следующей фотографии
+  } else {
+    signalElement.textContent = "Неправильно! Игра окончена.";
+    signalElement.classList.add("incorrect");
+    answerInput.disabled = true; // Выключаем поле ввода ответа
+  }
+}
+
+// Обработчик события для кнопки "Начать игру"
+const startButton = document.getElementById("start-button");
+startButton.addEventListener("click", startGame);
+
+// Обработчик события для поля ввода ответа (нажатие клавиши Enter)
+answerInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    checkAnswer();
+  }
+});
+
+// Запускаем первую игру
+startGame();

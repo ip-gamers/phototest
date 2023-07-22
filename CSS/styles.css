@@ -1,0 +1,39 @@
+/* Пример стилей для вашей игры */
+.game-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  #game-info {
+    margin-top: 20px;
+  }
+  
+  #answer-input {
+    width: 200px;
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  #signal {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .correct {
+    background-color: green;
+  }
+  
+  .incorrect {
+    background-color: red;
+  }  
