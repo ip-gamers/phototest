@@ -1,31 +1,91 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Ваша тест-игра</title>
+    <title>Угадай персонажа</title>
     <link rel="stylesheet" href="css/styles.css">
     <audio id="audio-correct" src="sound/positive.mp3"></audio>
     <audio id="audio-incorrect" src="sound/negative.mp3"></audio>
 </head>
-<body>
-    <div class="game-container">
-        <!-- Контейнер для отображения фотографии -->
-        <img src="" alt="Фотография" id="photo">
 
-        <!-- Информация о текущем состоянии игры -->
-        <div id="game-info">
-            <!-- Улучшенный цветовой сигнал для правильного и неправильного ответа -->
-            <div id="signal">
-             <span class="signal-text"></span>
+<body>
+
+    <div class="tab-container">
+        <button class="tab" onclick="openTab('game')">Игра</button>
+        <button class="tab" onclick="openTab('about-game')">О игре</button>
+    </div>
+
+    <div id="game" class="tab-content" style="display: block;">
+        <div class="game-container">
+            <!-- Контейнер для отображения фотографии -->
+            <img src="" alt="Фотография" id="photo">
+
+            <!-- Информация о текущем состоянии игры -->
+            <div id="game-info">
+                <!-- Улучшенный цветовой сигнал для правильного и неправильного ответа -->
+                <div id="signal">
+                    <span class="signal-text"></span>
+                </div>
+                <input type="text" id="answer-input" placeholder="Введите ответ">
+                <!-- Добавьте кнопку с id="start-recognition" -->
+                <button id="start-recognition">Начать распознавание речи</button>
+                <button id="start-button">Начать игру</button>
             </div>
-            <p>Вам нужно ввести или произнести персонажа, четко, в формате <strong>Имя Фамилия</strong>. Регистр не учитывается. Одна ошибка, проигрыш.</p>
-            <input type="text" id="answer-input" placeholder="Введите ответ">
-            <!-- Добавьте кнопку с id="start-recognition" -->
-            <button id="start-recognition">Начать распознавание речи</button>
-            <button id="start-button">Начать игру</button>
         </div>
+    </div>
+
+    <div id="about-game" class="tab-content">
+        <p>
+            Это интересная тест-игра, в которой ваша задача угадать персонажа по его фотографии. Вам будут показываться
+            фотографии различных персонажей из кино и телевидения. Ваша задача состоит в том, чтобы правильно определить
+            имя и фамилию персонажа, которого вы видите на картинке.
+        </p>
+
+        <p>
+            <strong>Правила игры:</strong>
+        </p>
+
+        <ol>
+            <li>
+                Вам предоставляется фотография персонажа.
+            </li>
+            <li>
+                Введите или произнесите имя и фамилию персонажа, используя формат &quot;Имя Фамилия&quot; без учета
+                регистра букв.
+            </li>
+            <li>
+                Если вы вводите ответ с помощью клавиатуры, просто наберите имя и фамилию в поле ввода и нажмите
+                <em><strong>Enter</strong></em>.
+            </li>
+            <li>
+                Если вы хотите использовать распознавание речи, нажмите на кнопку &quot;<em><strong>Начать распознавание
+                        речи</strong></em>&quot; и произнесите имя и фамилию персонажа.
+            </li>
+            <li>
+                Если ваш ответ правильный, вы услышите звуковой сигнал и увидите сообщение
+                &quot;<em><strong>Правильно!</strong></em>&quot;.
+            </li>
+            <li>
+                Если ваш ответ неправильный, вы услышите другой звуковой сигнал и увидите сообщение &quot;<em><strong>Ты
+                        проиграл!</strong></em>&quot;.
+            </li>
+            <li>
+                После каждого правильного ответа вы увидите следующую фотографию персонажа.
+            </li>
+            <li>
+                Игра заканчивается, когда заканчиваются все фотографии персонажей, и вы увидите сообщение
+                &quot;<em><strong>Игра окончена!</strong></em>&quot;.
+            </li>
+        </ol>
+
+        <p>
+            Удачи в угадывании персонажей!
+        </p>
+
     </div>
 
     <script src="js/script.js"></script>
 </body>
+
 </html>
