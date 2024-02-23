@@ -16,6 +16,11 @@ const startRecognitionButton = document.getElementById("start-recognition"); // 
 // Массив с данными о фотографиях
 const charactersData = [
   {
+    name: "Василий",
+    surname: "Рогов",
+    photoUrl: "IMAGES/19.jpg"
+  },
+  {
     name: "Грегори",
     surname: "Хаус",
     photoUrl: "IMAGES/18.jpg"
