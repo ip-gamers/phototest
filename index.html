@@ -16,37 +16,28 @@
         <button class="tab" onclick="openTab('about-game')">О игре</button>
         <button class="tab" onclick="openTab('support')">Поддержка</button>
     </div>
-
     <div id="game" class="tab-content" style="display: block;">
         <div class="game-container">
-            <!-- Контейнер для отображения фотографии -->
             <img src="" alt="Фотография" id="photo">
-
-            <!-- Информация о текущем состоянии игры -->
             <div id="game-info">
-                <!-- Улучшенный цветовой сигнал для правильного и неправильного ответа -->
                 <div id="signal">
                     <span class="signal-text"></span>
                 </div>
                 <input type="text" id="answer-input" placeholder="Введите ответ">
-                <!-- Добавьте кнопку с id="start-recognition" -->
                 <button id="start-recognition">Начать распознавание речи</button>
                 <button id="start-button">Начать игру</button>
             </div>
         </div>
     </div>
-
     <div id="about-game" class="tab-content">
         <p>
             Это интересная тест-игра, в которой ваша задача угадать персонажа по его фотографии. Вам будут показываться
             фотографии различных персонажей из кино и телевидения. Ваша задача состоит в том, чтобы правильно определить
             имя и фамилию персонажа, которого вы видите на картинке.
         </p>
-
         <p>
             <strong>Правила игры:</strong>
         </p>
-
         <ol>
             <li>
                 Вам предоставляется фотография персонажа.
@@ -79,18 +70,14 @@
                 &quot;<em><strong>Игра окончена!</strong></em>&quot;.
             </li>
         </ol>
-
         <p>
             Удачи в угадывании персонажей!
         </p>
-
     </div>
-
     <div id="support" class="tab-content">
         <p>
             Чуть ниже вы видите ссылки, с помощью которых вы можете каким то образом внести свой вклад в игру.
         </p>
-
         <ul>
             <li>
                 <a href="https://ip-gamers.net/clients/donations/" target="_blank">Внести пожертвование</a>
@@ -108,7 +95,6 @@
                     <em><strong>GitHub</strong></em></a>
             </li>
         </ul>
-
     </div>
 
     <script src="js/script.js"></script>
